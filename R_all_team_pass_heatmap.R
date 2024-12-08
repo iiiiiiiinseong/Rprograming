@@ -331,16 +331,6 @@ create_pass_location_data <- function(match_id, team_name, events_folder_path) {
   return(pass_location)
 }
 
-# 히트맵 그리는 함수 (10x10 grid)
-draw_pass_heatmap <- function(df, team_name, field_length = 120, field_width = 80) {
-  ggplot(df, aes(x = x, y = y)) +
-    stat_bin2d(bins = 5, drop = TRUE) +
-    scale_x_continuous(limits = c(0, field_length), expand = c(0,0)) +
-    scale_y_continuous(limits = c(0, field_width), expand = c(0,0)) +
-    labs(title = paste(team_name, "Pass Heatmap (5x5 Grid)"),
-         x = "Pitch X", y = "Pitch Y") +
-    theme_minimal()
-}
 
 # 축구장 레이아웃 그리는 함수
 draw_pitch <- function(field_length = 120, field_width = 80) {
