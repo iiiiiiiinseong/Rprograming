@@ -373,17 +373,6 @@ draw_pitch <- function(field_length = 120, field_width = 80) {
 #########################################################################
 #%%
 
-# 패스 수 카운팅 함수
-counting_pass <- function(match_id, team_name, events_folder_path) {
-  file_path_event <- file.path(events_folder_path, paste0(match_id, ".json"))
-  events <- fromJSON(file_path_event, flatten = TRUE)
-  
-  # 패스 이벤트 필터링
-  team_passes <- events %>%
-    filter(type.name == "Pass", team.name == team_name)
-  return(nrow(team_passes))
-}
-
 # 특정 경기 설정
 example_match_id <- laliga_played_no_draw$match_id[1]  # 예시로 첫 번째 경기
 winner_team <- laliga_played_no_draw$winner_team[laliga_played_no_draw$match_id == example_match_id][1]
